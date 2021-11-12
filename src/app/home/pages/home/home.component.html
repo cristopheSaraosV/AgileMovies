@@ -1,3 +1,9 @@
+<div class="row">
+    <!-- MENU -->
+    <div class="col-sm-12 ">
+       <app-menu></app-menu>
+    </div>
+</div>
 <div class="px-5" *ngIf="listMostPopularMovies.length !== 0 else messageThereIsNoData">
     <div class="row">
         <!-- TODO CAROUSEL -->
@@ -11,7 +17,7 @@
     <div class="row mt-5 mx-md-5">
         <!-- TODO CARD -->
         <div class="text-center mt-3 mb-3">
-            <h3 class="display-3">Peliculas en estreno</h3>
+            <h3 class="display-3">Peliculas más populares</h3>
         </div>
         <div  *ngFor="let movie of listMostPopularMovies" class="col-sm-12 col-md-3 col-lg-2 col-lg-1">
                 <app-card 

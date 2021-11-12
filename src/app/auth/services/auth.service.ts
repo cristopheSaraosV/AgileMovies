@@ -47,4 +47,9 @@ export class AuthService {
         const url: string = `${this._urlBase}/auth/refresh`;
         return this.http.post(url, localStorage.getItem('refresh_token') );
     }
+
+
+    deleteLocalStorage(){
+        localStorage.clear();
+    }
 }
