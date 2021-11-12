@@ -1,0 +1,27 @@
+<form [formGroup]="myFormLogin" (submit)="login()">
+	<div class="mb-3">
+		<label for="usernameInput" class="form-label">Username</label>
+		<input
+			type="text"
+			class="form-control"
+			id="usernameInput"
+			aria-describedby="userNameHelp"
+			formControlName="userName"
+		/>
+		<div id="userNameHelp" class="form-text">
+			We'll never share your username with anyone else.
+		</div>
+	</div>
+	<div class="mb-3">
+		<label for="passwordInput" class="form-label">Password</label>
+		<input
+			type="password"
+			class="form-control"
+			id="passwordInput"
+			formControlName="password"
+		/>
+	</div>
+
+	<button type="submit" class="btn btn-primary"
+     [disabled]=myFormLogin.invalid>Login</button>
+</form>
