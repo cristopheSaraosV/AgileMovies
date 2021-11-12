@@ -7,6 +7,8 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { CardComponent } from './components/card/card.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { MenuComponent } from './components/menu/menu.component';
+import { DetailComponent } from './pages/detail/detail.component';
+import { DetailMoviesModule } from '../detail-movies/detail-movies.module';
 
 
 @NgModule({
@@ -14,12 +16,14 @@ import { MenuComponent } from './components/menu/menu.component';
     HomeComponent,
     CarouselComponent,
     CardComponent,
-    MenuComponent
+    MenuComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    DetailMoviesModule
   ]
 })
 export class HomeModule { }

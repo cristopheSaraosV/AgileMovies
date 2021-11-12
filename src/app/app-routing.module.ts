@@ -9,7 +9,7 @@ const routes: Routes = [
 			import('./auth/auth.module').then((m) => m.AuthModule),
 	},
 	{
-		path: 'home',
+		path: '',
         canLoad:[
             ValidateTokenGuard
         ],
@@ -21,7 +21,7 @@ const routes: Routes = [
 	},
 	{
 		path: '**',
-		redirectTo: 'auth',
+		redirectTo: '',
 	},
 ];
 
