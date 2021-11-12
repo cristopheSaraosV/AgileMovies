@@ -6,29 +6,45 @@ import { environment } from 'src/environments/environment';
 import { LoginResAPI } from '../interfaces/loginResApi.interface';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root',
 })
 export class AuthService {
+	constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+	private _urlBase = environment.URLBASE;
 
-  private _urlBase = environment.URLBASE;
+	login(
+		username: string,
+		password: string
+	): Observable<boolean | HttpErrorResponse> {
+		const url: string = `${this._urlBase}/auth/login`;
+		return this.http
+			.post<LoginResAPI>(url, { username, password })
+			.pipe(
+				map((resp) => {
+					const { user } = resp.data;
+					const { token, refresh_token } = resp.data.payload;
+					localStorage.setItem('refresh_token', refresh_token);
+					localStorage.setItem('token', token);
+					localStorage.setItem('user', JSON.stringify(user));
+
+					return true;
+				}),
+				catchError((err) => {
+            
+                    return of(err.error.message);
+                    
+				})
+			);
+	}
 
 
-  login(username:string,password:string): Observable<boolean| HttpErrorResponse>{
-    const url: string = `${this._urlBase}/auth/login`;
-    return this.http.post<LoginResAPI >(url,{username,password}).pipe(
-        map( resp => {
-            const { token} = resp.data.payload
-            localStorage.setItem('token', token);
+    getToken(){
+        return localStorage.getItem('token');
+    }
 
-            return {status: true};
-        }),
-        catchError( err => {
-           
-            return of(err.error.message)
-        } )
-    )
-}
-
+    refresh_token(){
+        const url: string = `${this._urlBase}/auth/refresh`;
+        return this.http.post(url, localStorage.getItem('refresh_token') );
+    }
 }
