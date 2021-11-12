@@ -1,0 +1,28 @@
+<div class="px-5" *ngIf="listMostPopularMovies.length !== 0 else messageThereIsNoData">
+    <div class="row">
+        <!-- TODO CAROUSEL -->
+        <div class="col-sm-12 ">
+            <div class="text-center mt-3 mb-3">
+                <h3 class="display-3">Peliculas en estreno</h3>
+            </div>
+            <app-carousel></app-carousel>
+        </div>
+    </div>
+    <div class="row mt-5 mx-md-5">
+        <!-- TODO CARD -->
+        <div class="text-center mt-3 mb-3">
+            <h3 class="display-3">Peliculas en estreno</h3>
+        </div>
+        <div  *ngFor="let movie of listMostPopularMovies" class="col-sm-12 col-md-3 col-lg-2 col-lg-1">
+                <app-card 
+                [movie]="movie">
+                </app-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #messageThereIsNoData>
+    <div class="alert alert-danger container mt-5" role="alert">
+        There is no data      
+    </div>
+</ng-template>

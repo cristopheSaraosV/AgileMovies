@@ -1,0 +1,11 @@
+
+ <carousel *ngIf="listMovieNowPlaying.lenght !== 0;else messageThereIsNoData"
+ [images]="listMovieNowPlaying"
+ [loop]="true">
+</carousel>
+
+<ng-template #messageThereIsNoData>
+    <div class="alert alert-danger mt-5 mx-4" role="alert">
+        There is no data      
+    </div>
+</ng-template>
