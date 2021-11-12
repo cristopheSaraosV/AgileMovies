@@ -1,11 +1,53 @@
-
+<!-- 
  <carousel *ngIf="listMovieNowPlaying.lenght !== 0;else messageThereIsNoData"
  [images]="listMovieNowPlaying"
  [loop]="true">
-</carousel>
+</carousel> -->
+
+<div
+	id="carouselExampleControls"
+	class="carousel slide"
+	data-bs-ride="carousel"
+>
+	<div class="carousel-inner">
+		<!-- <div class="carousel-item active">
+			<img
+				src="https://www.gamerfocus.co/wp-content/uploads/2021/08/image-152.png"
+				class="d-block w-100"
+				alt="..."
+			/>
+			
+		</div> -->
+		<div *ngFor="let movie of listMovieNowPlaying;let i = index"  [class]="i==0 ? 'carousel-item active':'carousel-item' "  >
+			<img
+				[src]="movie.path"
+				class="d-block w-100"
+				alt="..."			/>
+			
+		</div>
+	</div>
+	<button
+		class="carousel-control-prev"
+		type="button"
+		data-bs-target="#carouselExampleControls"
+		data-bs-slide="prev"
+	>
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+	</button>
+	<button
+		class="carousel-control-next"
+		type="button"
+		data-bs-target="#carouselExampleControls"
+		data-bs-slide="next"
+	>
+		<span class="carousel-control-next-icon" aria-hidden="true" (click)=getMoreMovie(numberOfMovies-1)></span>
+		<span class="visually-hidden"  >Next</span>
+	</button>
+</div>
 
 <ng-template #messageThereIsNoData>
-    <div class="alert alert-danger mt-5 mx-4" role="alert">
-        There is no data      
-    </div>
+	<div class="alert alert-danger mt-5 mx-4" role="alert">
+		There is no data
+	</div>
 </ng-template>
