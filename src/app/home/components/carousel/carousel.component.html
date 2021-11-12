@@ -32,7 +32,7 @@
 		data-bs-target="#carouselExampleControls"
 		data-bs-slide="prev"
 	>
-		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<button [disabled]="numberOfMovies>=20 "  class="carousel-control-prev-icon" aria-hidden="true" (click)=returnMovie(numberOfMovies+1)></button>
 		<span class="visually-hidden">Previous</span>
 	</button>
 	<button
@@ -41,7 +41,7 @@
 		data-bs-target="#carouselExampleControls"
 		data-bs-slide="next"
 	>
-		<span class="carousel-control-next-icon" aria-hidden="true" (click)=getMoreMovie(numberOfMovies-1)></span>
+		<button   class="carousel-control-next-icon" aria-hidden="true" (click)=getMoreMovie(numberOfMovies) ></button>
 		<span class="visually-hidden"  >Next</span>
 	</button>
 </div>

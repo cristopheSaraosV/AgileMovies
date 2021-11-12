@@ -23,7 +23,6 @@ export class CarouselComponent implements OnInit {
 		this.movieService.getNow_playing(1).subscribe(
 			(res) => {
 				this.listMovieNowPlaying = res;
-                console.log(res);
 			},
 			(err) => {
 				console.log(err.error.message);
@@ -31,23 +30,37 @@ export class CarouselComponent implements OnInit {
 		);
 	}
 
-    getMoreMovie(movieNumber:number=1){
-        this.numberOfMovies = this.numberOfMovies -1;
-        if(movieNumber == 0){
-            this.movieService.getNow_playing(this.page+1).subscribe(
-                (res) => {
-                    this.listMovieNowPlaying = res;
-                    this.page= this.page+1
-                    res.map(( item => {
-                        this.listMovieNowPlaying.push(item);
-                    }))
-                    this.numberOfMovies = 20;
-                },
-                (err) => {
-                    console.log(err.error.message);
-                }
-            );
+    returnMovie(movieNumber:number){
+        console.log(movieNumber);
+        if(this.numberOfMovies>=0){
+            this.numberOfMovies = this.numberOfMovies +1; 
         }
+    }
+
+
+    getMoreMovie(movieNumber:number=1){
+        if(this.numberOfMovies <= 20){
+            this.numberOfMovies = this.numberOfMovies -1;
+            if(movieNumber == 0){
+                this.movieService.getNow_playing(this.page+1).subscribe(
+                    (res) => {
+                        this.listMovieNowPlaying = res;
+                        this.page= this.page+1
+                        res.map(( item => {
+                            this.listMovieNowPlaying.push(item);
+                        }))
+                        if(this.numberOfMovies <=0 ){
+                            this.numberOfMovies = 20;
+                        }
+                    },
+                    (err) => {
+                        console.log(err.error.message);
+                    }
+                );
+            }
+        }
+        
+        
         
     }
 }
