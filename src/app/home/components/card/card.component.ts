@@ -14,6 +14,6 @@ export class CardComponent implements OnInit {
   @Input('movie') movie!:Datum;
 
   ngOnInit(): void {
-  }
+}
 
 }

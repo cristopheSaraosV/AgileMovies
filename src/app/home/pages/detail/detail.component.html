@@ -1,0 +1,24 @@
+<div class="row">
+    <!-- MENU -->
+    <div class="col-sm-12 ">
+       <app-menu></app-menu>
+    </div>
+</div>
+<div class="px-5" >
+    <div class="row">
+        <div class="col-sm-12">
+            <button routerLink="home" class="btn btn-primary mt-4">
+                Volver
+            </button>
+        </div>
+        <!-- TODO CAROUSEL -->
+        <div class="col-sm-12 ">
+            <app-detail-movie
+            [paramsHeaders]="paramsHeaders"
+            [paramsBody]="paramsBody"
+            [idMovie]="idMovie"
+            ></app-detail-movie>
+        </div>
+    </div>
+    
+</div>

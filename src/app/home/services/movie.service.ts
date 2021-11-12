@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { MovieCastResAPI } from '../interfaces/movieCast.interface';
 import { MovieNowPlayingResAPI } from '../interfaces/movieNowPlaying.interface';
 
 @Injectable({
@@ -40,7 +41,8 @@ export class MovieService {
 				map((resp) => {
 					return resp.data.map((movie) => {
 						return {
-							img: resp.imageBaseUrl + movie.poster_path,
+                            baseUrl:resp.imageBaseUrl,
+							img: resp.imageBaseUrl + movie.backdrop_path,
 							adult:movie.adult,
                             backdrop_path:movie.backdrop_path,
                             genre_ids:movie.genre_ids,
@@ -63,4 +65,14 @@ export class MovieService {
                 
 			);
 	}
+
+    getMovieCast(idMovie:string ){
+        const url: string = `${this._urlBase}/movies/${idMovie}/actors`;
+		const headers = new HttpHeaders().set(
+			'authorization',
+			'Bearer ' + localStorage.getItem('token') || ''
+		);
+		return this.http
+			.get<MovieCastResAPI>(url, { headers })
+    }
 }

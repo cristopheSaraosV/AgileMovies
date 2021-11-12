@@ -3,7 +3,8 @@
     <div class="card-body">
       <h5 class="card-title">{{movie.original_title}}</h5>
       <p class="card-text">{{movie.overview}}</p>
-      <a routerLink="#" class="btn btn-primary">Detail</a>
+      <button [routerLink]="['/detail', movie ]" class="btn btn-primary">Detail</button>
 
     </div>
   </div>
+

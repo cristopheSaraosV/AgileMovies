@@ -4,6 +4,7 @@ export interface MovieNowPlayingResAPI {
 }
 
 export interface Datum {
+    baseUrl?:           string,
     img?:               string,
     adult:             boolean;
     backdrop_path:     string;
