@@ -58,4 +58,11 @@ export class FormLoginComponent implements OnInit {
             }
           })
     }
+
+    fieldIsValid(campo: string) {
+		return (
+			this.myFormLogin.controls[campo].errors &&
+			this.myFormLogin.controls[campo].touched
+		);
+	}
 }
