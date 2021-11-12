@@ -46,6 +46,7 @@ export class CarouselComponent implements OnInit {
                     (res) => {
                         this.listMovieNowPlaying = res;
                         this.page= this.page+1
+                        console.log(res);
                         res.map(( item => {
                             this.listMovieNowPlaying.push(item);
                         }))

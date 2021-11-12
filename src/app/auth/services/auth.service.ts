@@ -45,7 +45,13 @@ export class AuthService {
 
     refresh_token(){
         const url: string = `${this._urlBase}/auth/refresh`;
-        return this.http.post(url, localStorage.getItem('refresh_token') );
+        return this.http.post<LoginResAPI>(url, {refresh_token:localStorage.getItem('refresh_token') }).pipe(
+            map( (resp) =>{
+                localStorage.setItem('token',resp.data.payload.token)
+                return true;
+
+            })
+        )
     }
 
 

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { MovieCastResAPI } from '../interfaces/movieCast.interface';
 import { MovieNowPlayingResAPI } from '../interfaces/movieNowPlaying.interface';
@@ -10,7 +11,7 @@ import { MovieNowPlayingResAPI } from '../interfaces/movieNowPlaying.interface';
 	providedIn: 'root',
 })
 export class MovieService {
-	constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient, private authService: AuthService) {}
 
 	private _urlBase = environment.URLBASE;
 
@@ -25,7 +26,15 @@ export class MovieService {
 			.pipe(
 				map((resp) => {
 					return resp.data.map((movie) => ( {path: resp.imageBaseUrl + movie.backdrop_path  }));
-				})
+				}),catchError( (err) => {
+                    if(err.status == 401){
+                        this.authService.refresh_token().subscribe( res => {
+                            console.log(res);
+                            this.getNow_playing();
+                        });
+                    }
+                   return of([{path:''}])
+                })
 			);
 	}
 
@@ -60,6 +69,12 @@ export class MovieService {
 						};
 					});
 				}),catchError( (err) => {
+                    if(err.status == 401){
+                        this.authService.refresh_token().subscribe( res => {
+                            console.log(res);
+                            this.getNow_playing();
+                        });
+                    }
                     return of(err.error.message);
                 })
                 
