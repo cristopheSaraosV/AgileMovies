@@ -22,7 +22,7 @@ export class AuthService {
             const { token} = resp.data.payload
             localStorage.setItem('token', token);
 
-            return {status: true};
+            return  true;
         }),
         catchError( err => {
            
