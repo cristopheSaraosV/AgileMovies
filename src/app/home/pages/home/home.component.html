@@ -5,13 +5,13 @@
     </div>
 </div>
 <div class="px-5" *ngIf="listMostPopularMovies.length !== 0 else messageThereIsNoData">
-    <div class="row">
+    <div class="row mx-md-5 px-md-5">
         <!-- TODO CAROUSEL -->
         <div class="col-sm-12 ">
             <div class="text-center mt-3 mb-3">
                 <h3 class="display-3">Peliculas en estreno</h3>
             </div>
-            <app-carousel></app-carousel>
+            <app-carousel class="container"></app-carousel>
         </div>
     </div>
     <div class="row mt-5 mx-md-5">

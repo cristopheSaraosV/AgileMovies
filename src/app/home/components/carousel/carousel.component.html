@@ -1,23 +1,12 @@
-<!-- 
- <carousel *ngIf="listMovieNowPlaying.lenght !== 0;else messageThereIsNoData"
- [images]="listMovieNowPlaying"
- [loop]="true">
-</carousel> -->
+
 
 <div
 	id="carouselExampleControls"
-	class="carousel slide"
+	class="carousel slide container"
 	data-bs-ride="carousel"
 >
 	<div class="carousel-inner">
-		<!-- <div class="carousel-item active">
-			<img
-				src="https://www.gamerfocus.co/wp-content/uploads/2021/08/image-152.png"
-				class="d-block w-100"
-				alt="..."
-			/>
-			
-		</div> -->
+	
 		<div *ngFor="let movie of listMovieNowPlaying;let i = index"  [class]="i==0 ? 'carousel-item active':'carousel-item' "  >
 			<img
 				[src]="movie.path"

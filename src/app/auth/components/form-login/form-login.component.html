@@ -11,6 +11,12 @@
 		<div id="userNameHelp" class="form-text">
 			We'll never share your username with anyone else.
 		</div>
+        <span
+				*ngIf="fieldIsValid('userName')"
+				class="input-group alert alert-danger mb-2 mt-3"
+			>
+				The username is required
+			</span>
 	</div>
 	<div class="mb-3">
 		<label for="passwordInput" class="form-label">Password</label>
@@ -20,6 +26,12 @@
 			id="passwordInput"
 			formControlName="password"
 		/>
+        <span
+				*ngIf="fieldIsValid('password')"
+				class="input-group alert alert-danger mb-2 mt-3"
+			>
+				The password is required, must have a minimum 6
+			</span>
 	</div>
 
 	<button type="submit" class="btn btn-primary"
