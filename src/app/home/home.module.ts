@@ -6,13 +6,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CardComponent } from './components/card/card.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     CarouselComponent,
-    CardComponent
+    CardComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
