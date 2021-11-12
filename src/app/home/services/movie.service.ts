@@ -24,7 +24,7 @@ export class MovieService {
 			.get<MovieNowPlayingResAPI>(url, { headers })
 			.pipe(
 				map((resp) => {
-					return resp.data.map((movie) => ( {path: resp.imageBaseUrl + movie.poster_path  }));
+					return resp.data.map((movie) => ( {path: resp.imageBaseUrl + movie.backdrop_path  }));
 				})
 			);
 	}

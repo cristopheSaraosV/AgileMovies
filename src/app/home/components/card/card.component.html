@@ -1,9 +1,10 @@
-<div class="card" >
+<div class="card mb-2" >
     <img [src]="movie.img" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{movie.original_title}}</h5>
-      <p class="card-text">{{movie.overview}}</p>
-      <button [routerLink]="['/detail', movie ]" class="btn btn-primary">Detail</button>
+      <div class="d-grid  mt-4 mb-2">
+        <button [routerLink]="['/detail', movie ]" class="btn btn-outline-primary">Detail</button>
+      </div>
 
     </div>
   </div>
