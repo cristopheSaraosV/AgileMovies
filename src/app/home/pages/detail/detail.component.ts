@@ -19,12 +19,13 @@ export class DetailComponent implements OnInit {
         resumen:'',
         url:''
     } 
+    idMovie:string = ''
     // const paramsBody    =
     // const paramsFooter  =
 
 	ngOnInit(): void {
         if(this.ruteActive.snapshot.params){
-            const { original_title,img,overview,baseUrl,poster_path } = this.ruteActive.snapshot.params
+            const { original_title,img,overview,baseUrl,poster_path, id } = this.ruteActive.snapshot.params
             this.paramsHeaders = {
                 nameMovie:original_title,
                 url: img
@@ -33,6 +34,8 @@ export class DetailComponent implements OnInit {
                 resumen:overview,
                 url: baseUrl+poster_path
             }
+
+            this.idMovie = id;
 
         }
 

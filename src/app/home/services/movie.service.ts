@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { MovieCastResAPI } from '../interfaces/movieCast.interface';
 import { MovieNowPlayingResAPI } from '../interfaces/movieNowPlaying.interface';
 
 @Injectable({
@@ -64,4 +65,14 @@ export class MovieService {
                 
 			);
 	}
+
+    getMovieCast(idMovie:string ){
+        const url: string = `${this._urlBase}/movies/${idMovie}/actors`;
+		const headers = new HttpHeaders().set(
+			'authorization',
+			'Bearer ' + localStorage.getItem('token') || ''
+		);
+		return this.http
+			.get<MovieCastResAPI>(url, { headers })
+    }
 }

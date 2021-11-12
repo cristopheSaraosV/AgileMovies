@@ -14,6 +14,7 @@ export class DetailMovieComponent implements OnInit {
 
   @Input('paramsHeaders') paramsHeaders!:headerDetail;
   @Input('paramsBody') paramsBody!: headerBody;
+  @Input('idMovie') idMovie!: string;
 
   ngOnInit(): void {
   }
