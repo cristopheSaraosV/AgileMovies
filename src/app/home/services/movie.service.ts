@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { MovieNowPlayingResAPI } from '../interfaces/movieNowPlaying.interface';
 
@@ -56,7 +57,10 @@ export class MovieService {
                             vote_count:movie.vote_count,
 						};
 					});
-				})
+				}),catchError( (err) => {
+                    return of(err.error.message);
+                })
+                
 			);
 	}
 }
