@@ -40,7 +40,8 @@ export class MovieService {
 				map((resp) => {
 					return resp.data.map((movie) => {
 						return {
-							img: resp.imageBaseUrl + movie.poster_path,
+                            baseUrl:resp.imageBaseUrl,
+							img: resp.imageBaseUrl + movie.backdrop_path,
 							adult:movie.adult,
                             backdrop_path:movie.backdrop_path,
                             genre_ids:movie.genre_ids,

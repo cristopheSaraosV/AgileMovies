@@ -26,9 +26,7 @@ export class HomeComponent implements OnInit {
     this.movieService.getMostPopularMovies(1).subscribe( res => {
         this.listMostPopularMovies = res;
     },err => {
-        if(err.error.message == "jwt expired"){
-            console.log('aaaa');
-        }
+       
     });
   }
 }
